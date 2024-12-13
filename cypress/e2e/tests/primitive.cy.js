@@ -25,7 +25,7 @@ function getParts(string) {
 describe('Primitive Way', () => {
     it('Single Task', () => {
         //signup task
-        cy.visit("https://automationexercise.com/login");
+        cy.visit('https://automationexercise.com/login');
 
         // cy.get('[data-qa="login-email"]').clear().type('tahsin.refat@gmail.com').should('have.value', 'tahsin.refat@gmail.com');
         // cy.get('[data-qa="login-password"]').clear().type('Zen1tsuzzz').should('have.value', 'Zen1tsuzzz');
@@ -150,12 +150,13 @@ describe('Primitive Way', () => {
 
         const filePath = 'example.json';
         cy.get('input[type="file"]').attachFile(filePath);
+        cy.pause();
 
+        cy.get('[data-qa="submit-button"]').click();
+        cy.pause();
         cy.on('window:alert', (str) => {
             expect(str).to.equal('Press OK to proceed!');
         });
-        
-        cy.get('button[type="submit"]').click();
 
 
         cy.contains('Success! Your details have been submitted successfully.').should('be.visible');

@@ -36,6 +36,7 @@ export class SignupTasks{
         signupMethods.titleClicker();
         signupMethods.setPassword(this.randomPassword);
         userInfo.set('password', this.randomPassword);
+        signupMethods.writeToUserInfoJson(userInfo);
         signupMethods.selectBirthDay(this.day);
         signupMethods.selectBirthMonth(this.month);
         signupMethods.selectBirthYear(this.year);

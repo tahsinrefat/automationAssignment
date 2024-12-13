@@ -6,6 +6,7 @@ export class SignupMethods {
     signUpButtonSelector = '[data-qa="signup-button"]';
     titleSelector = '[data-qa="title"]';
     passwordFieldSelector = '[data-qa="password"]';
+    pathToJson = 'cypress/fixtures/userInfo.json';
     birthdayDaysSelector = '[data-qa="days"]';
     birthdayMonthsSelector = '[data-qa="months"]';
     birthdayYearsSelector = '[data-qa="years"]';
@@ -31,6 +32,12 @@ export class SignupMethods {
     
     titleClicker = () => cy.get(this.titleSelector).first().click();
     setPassword = (randomPassowrd) => cy.get(this.passwordFieldSelector).clear().type(randomPassowrd).should('have.value', randomPassowrd);
+    writeToUserInfoJson = (userInfo) => {
+        const userInfoObject = Object.fromEntries(userInfo);
+        cy.writeFile(this.pathToJson, userInfoObject).then(() => {
+            cy.log('New user info saved to JSON file');
+        });
+    }
     selectBirthDay = (day) => cy.get(this.birthdayDaysSelector).select(day).should('have.value', day);
     selectBirthMonth = (month) => cy.get(this.birthdayMonthsSelector).select(month).should('have.value', month);
     selectBirthYear = (year) => cy.get(this.birthdayYearsSelector).select(year).should('have.value', year);

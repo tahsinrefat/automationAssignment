@@ -36,14 +36,7 @@ export class APITestMethods{
               password: user.password,
             },
           }).then((response) => {
-            // this is a rare case, normally response body is returned as an object not a json string
-            // this is if the response body is a json string, we can check as it is wuth include
-            // expect(response.status).to.eq(200);
-            // expect(response.body).to.include('"responseCode": 200')
-            // expect(response.body).to.include('"message": "User exists!"')
-
-            // or we can convert the json string into js object and check using to.have,property
-            // check if response.body is already an object
+            //converted into js object as an object is expected
             const body = typeof response.body === 'string' 
                 ? JSON.parse(response.body) 
                 : response.body;

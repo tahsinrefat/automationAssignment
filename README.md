@@ -10,6 +10,7 @@ This repository contains automated tests for both UI and API testing tasks, impl
   - Validates API endpoints, including brand list validation and user login verification.
 
 ## **Project Structure**
+```plaintext
 cypress/
 │
 ├── e2e/
